@@ -1,0 +1,106 @@
+
+{
+	"type": "object",
+	"required": [
+		"name",
+		"sections"
+	],
+	"properties": {
+		"name": {
+			"title": "Name",
+			"type": "string"
+		},
+		"sections": {
+			"title": "Sections",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/section"
+			}
+		}
+	},
+	"definitions": {
+		"answer": {
+			"title": "Answer",
+			"type": "object",
+			"required": [
+				"id",
+				"label",
+				"type"
+			],
+			"properties": {
+				"id": {
+					"title": "Answer ID",
+					"type": "string"
+				},
+				"label": {
+					"title": "Label",
+					"type": "string"
+				},
+				"type": {
+					"title": "Question type",
+					"type": "number",
+					"enum": [
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				"choices": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"question": {
+			"title": "Question",
+			"type": "object",
+			"required": [
+				"id",
+				"question_text"
+			],
+			"properties": {
+				"id": {
+					"title": "Question ID",
+					"type": "string"
+				},
+				"mandatory": {
+					"title": "Mandatory",
+					"type": "boolean"
+				},
+				"question_text": {
+					"title": "Question",
+					"type": "string"
+				},
+				"answers": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/answer"
+					}
+				}
+			}
+		},
+		"section": {
+			"title": "Section",
+			"type": "object",
+			"required": [
+				"name"
+			], 
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"questions": {
+					"title": "Questions",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/question"
+					}
+				}
+			}
+		}
+	}
+}
