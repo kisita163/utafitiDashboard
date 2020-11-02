@@ -1,0 +1,26 @@
+.kisita {
+  color: rgba(255,255,255,.62);
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 300%;
+  font-style: unset;
+}
+
+
+.cardCategoryWhite {
+    color: rgba(255,255,255,.62);
+    margin: 0;
+    font-size: 14px;
+    margin-top: 0;
+    marginBottom: 0;
+}
+
+.cardTitleWhite {
+    color: "#FFFFFF";
+    marginTop: 0px;
+    minHeight: auto;
+    fontWeight: 300;
+    fontFamily: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    marginBottom: 3px;
+    textDecoration: none;
+}
+
