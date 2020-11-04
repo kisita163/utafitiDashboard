@@ -6,8 +6,8 @@ import firebaseConfig from "./firebaseConfig";
 class FirebaseAuthService {
   auth;
   firestore;
-  //   database;
-  //   storage;
+  database;
+  storage;
 
   googleProvider;
   facebookProvider;
@@ -40,8 +40,14 @@ class FirebaseAuthService {
   };
 
   signInWithEmailAndPassword = (email, password) => {
+    
     return this.auth.signInWithEmailAndPassword(email, password);
   };
+
+  userInfo = () => {
+
+    return firebase.auth().currentUser;
+  }
 
   signInWithPopup = media => {
     switch (media) {
@@ -63,11 +69,12 @@ class FirebaseAuthService {
     return this.auth.signInWithPhoneNumber(phoneNumber);
   };
 
-  getUserData = docId => {
+  getUserData = uid => {
+    
     //   generally it's better to use uid for docId
     this.firestore
       .collection("users")
-      .doc(docId)
+      .doc(uid)
       .get()
       .then(doc => {
         console.log(doc.data());

@@ -13,9 +13,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
+import { firebaseLoginEmailPassword } from "../../redux/actions/LoginActions";
 
-const styles = theme => ({
+const styles = () => ({
   wrapper: {
     position: "relative"
   },
@@ -31,8 +31,8 @@ const styles = theme => ({
 
 class SignIn extends Component {
   state = {
-    email: "watson@example.com",
-    password: "testpass",
+    email: "",
+    password: "",
     agreement: ""
   };
   handleChange = event => {
@@ -42,7 +42,7 @@ class SignIn extends Component {
     });
   };
   handleFormSubmit = event => {
-    this.props.loginWithEmailAndPassword({ ...this.state });
+    this.props.firebaseLoginEmailPassword({ ...this.state });
   };
   render() {
     let { email, password } = this.state;
@@ -139,9 +139,9 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = state => ({
-  loginWithEmailAndPassword: PropTypes.func.isRequired,
+  firebaseLoginEmailPassword: PropTypes.func.isRequired,
   login: state.login
 });
 export default withStyles(styles, { withTheme: true })(
-  withRouter(connect(mapStateToProps, { loginWithEmailAndPassword })(SignIn))
+  withRouter(connect(mapStateToProps, { firebaseLoginEmailPassword })(SignIn))
 );

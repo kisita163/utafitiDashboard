@@ -46,19 +46,23 @@ export function resetPassword({ email }) {
 }
 
 export function firebaseLoginEmailPassword({ email, password }) {
+
   return dispatch => {
     FirebaseAuthService.signInWithEmailAndPassword(email, password)
       .then(user => {
         if (user) {
+
+          const user = FirebaseAuthService.userInfo();
+          
           dispatch(
             setUserData({
-              userId: "1",
+              userId: user.uid,
               role: "ADMIN",
-              displayName: "Watson Joyce",
-              email: "watsonjoyce@gmail.com",
-              photoURL: "/assets/images/face-7.jpg",
-              age: 25,
-              token: "faslkhfh423oiu4h4kj432rkj23h432u49ufjaklj423h4jkhkjh",
+              displayName: user.displayName,
+              email: user.email,
+              photoURL: user.photoURL,
+              age: user.age,
+              token: user.token,
               ...user
             })
           );

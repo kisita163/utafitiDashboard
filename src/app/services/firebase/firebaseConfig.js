@@ -1,11 +1,10 @@
 const firebaseConfig = {
-  apiKey: "YOUR API KEY",
-  authDomain: "AUTH DOMAIN",
-  databaseURL: "DATABASE URL",
-  projectId: "PROJECT ID",
-  storageBucket: "STORAGE BUCKET",
-  messagingSenderId: "MESSAGING SENDER ID",
-  appId: "APP ID"
+  apiKey: "AIzaSyBSu9flb1cs58EAbtCbWUKomVCfXkTKYeU",
+  authDomain: "caritas-50fab.firebaseapp.com",
+  databaseURL: "https://caritas-50fab.firebaseio.com",
+  projectId: "caritas-50fab",
+  storageBucket: "caritas-50fab.appspot.com",
+  appId: "414267024306"
 };
 
 export default firebaseConfig;
