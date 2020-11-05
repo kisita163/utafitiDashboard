@@ -1,4 +1,5 @@
-import firebase from "firebase/app";
+//import firebase from "firebase/app";
+import firebase from "firebase";
 import "firebase/auth";
 import "firebase/firebase-firestore";
 import firebaseConfig from "./firebaseConfig";
@@ -34,6 +35,11 @@ class FirebaseAuthService {
   checkAuthStatus = callback => {
     this.auth.onAuthStateChanged(callback);
   };
+
+
+  getDataBase = (reference) => {
+     return this.database().ref(reference);
+  }
 
   signUpWithEmailAndPassword = (email, password) => {
     return this.auth.createUserWithEmailAndPassword(email, password);

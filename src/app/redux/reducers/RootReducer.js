@@ -6,10 +6,12 @@ import ScrumBoardReducer from "./ScrumBoardReducer";
 import NotificationReducer from "./NotificationReducer";
 import EcommerceReducer from "./EcommerceReducer";
 import NavigationReducer from "./NavigationReducer";
+import FirebaseReducer from "./FirebaseReducer";
 
 const RootReducer = combineReducers({
   login: LoginReducer,
   user: UserReducer,
+  firebase: FirebaseReducer,
   layout: LayoutReducer,
   scrumboard: ScrumBoardReducer,
   notification: NotificationReducer,
