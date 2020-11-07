@@ -9,7 +9,6 @@ import { withStyles } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { readFirebaseDatabase } from "../../redux/actions/FirebaseActions";
-import { Store } from "../../redux/Store";
 
 
 class Dashboard1 extends Component {
@@ -19,26 +18,20 @@ class Dashboard1 extends Component {
     this.props.readFirebaseDatabase("surveyTest");
   }
 
-  handleDatabase = () => {
-      console.log("handle firebase in Analytics");
-      console.log(Store.getState())
-  }
-
   render() {
     let { theme } = this.props;
-    this.handleDatabase();
     return (
       <Fragment>
         <div className="pb-24 pt-7 px-8 bg-primary">
           <div className="card-title capitalize text-white mb-4 text-white-secondary">
-            Last 12 months sales
+            {this.props.areaChart.description}
           </div>
           <ModifiedAreaChart
             height="280px"
             option={{
               series: [
                 {
-                  data: [34, 45, 31, 45, 31, 65, 26, 43, 31, 45, 33, 70],
+                  data: this.props.areaChart.data,
                   type: "line"
                 }
               ],
@@ -90,7 +83,7 @@ class Dashboard1 extends Component {
                 />
               </Card>
 {/* 
-              <UpgradeCard />
+              <UpgradeCard /> 
 
               <Campaigns /> */}
             </Grid>
@@ -103,7 +96,7 @@ class Dashboard1 extends Component {
 
 const mapStateToProps = state => (
   {
-    db: state.firebase.data
+    areaChart: state.firebase.areaChart
   }
 );
 

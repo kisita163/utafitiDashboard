@@ -1,7 +1,7 @@
 import {SET_FIREBASE_DB} from "../actions/FirebaseActions";
 
 const initialState = {
-  data: {}
+  areaChart: {}
 };
 
 const FirebaseReducer = function(state = initialState, action) {
@@ -9,7 +9,7 @@ const FirebaseReducer = function(state = initialState, action) {
     case SET_FIREBASE_DB: {
       return {
         ...state,
-        data: action.data
+        areaChart: action.areaChart
       };
     }
     default: {

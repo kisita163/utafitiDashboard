@@ -1,4 +1,5 @@
 import FirebaseAuthService from "../../services/firebase/firebaseAuthService";
+import APIClient from "../../services/api/apiClient"
 
 export const SET_FIREBASE_DB = "SET_FIREBASE_DB";
 
@@ -7,15 +8,15 @@ export function readFirebaseDatabase(reference) {
   return dispatch => {
       
       FirebaseAuthService.getDataBase(reference).on("value", snapshot => {
-        let data = []
-        snapshot.forEach(snap => {
-        data.push(snap.val())
-      });
-  
-      dispatch({
-        type: SET_FIREBASE_DB,
-        data: data
-      });
+ 
+        const apiClient = new APIClient("");
+        
+        apiClient.getAreaChart().then((data) => {
+          dispatch({
+            type: SET_FIREBASE_DB,
+            areaChart: data
+          });
+        });
     });
   };
 }
