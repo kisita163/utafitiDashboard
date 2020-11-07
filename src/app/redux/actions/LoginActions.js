@@ -51,9 +51,6 @@ export function firebaseLoginEmailPassword({ email, password }) {
     FirebaseAuthService.signInWithEmailAndPassword(email, password)
       .then(user => {
         if (user) {
-
-          const user = FirebaseAuthService.userInfo();
-          
           dispatch(
             setUserData({
               userId: user.uid,

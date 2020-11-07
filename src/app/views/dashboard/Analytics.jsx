@@ -9,14 +9,24 @@ import { withStyles } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { readFirebaseDatabase } from "../../redux/actions/FirebaseActions";
+import { Store } from "../../redux/Store";
 
 
 class Dashboard1 extends Component {
-  state = {};
+
+  constructor(props){
+    super(props);
+    this.props.readFirebaseDatabase("surveyTest");
+  }
+
+  handleDatabase = () => {
+      console.log("handle firebase in Analytics");
+      console.log(Store.getState())
+  }
 
   render() {
     let { theme } = this.props;
-    const u = readFirebaseDatabase("surveyTest");
+    this.handleDatabase();
     return (
       <Fragment>
         <div className="pb-24 pt-7 px-8 bg-primary">
@@ -91,7 +101,12 @@ class Dashboard1 extends Component {
   }
 }
 
+const mapStateToProps = state => (
+  {
+    db: state.firebase.data
+  }
+);
 
 export default withStyles({}, { withTheme: true })(
-  withRouter(connect()(Dashboard1))
+  withRouter(connect(mapStateToProps,{readFirebaseDatabase})(Dashboard1))
 );
