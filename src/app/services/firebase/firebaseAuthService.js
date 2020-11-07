@@ -41,6 +41,10 @@ class FirebaseAuthService {
      return this.database().ref(reference);
   }
 
+  getStorage = () => {
+    return this.storage().ref();
+  }
+
   signUpWithEmailAndPassword = (email, password) => {
     return this.auth.createUserWithEmailAndPassword(email, password);
   };

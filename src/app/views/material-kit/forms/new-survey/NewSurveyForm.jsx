@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import FirebaseAuthService from "../../../../services/firebase/firebaseAuthService"
 import {
   Grid
 } from "@material-ui/core";
@@ -10,18 +11,6 @@ import "./Survey.css";
 
 
 class NewSurveyForm extends Component {
-  state = {
-    username: "",
-    firstName: "",
-    email: "",
-    date: new Date(),
-    creditCard: "",
-    mobile: "",
-    password: "",
-    confirmPassword: "",
-    gender: "",
-    agreement: ""
-  };
 
   componentDidMount() {
     // custom rule will have name 'isPasswordMatch'
@@ -39,8 +28,22 @@ class NewSurveyForm extends Component {
   }
 
   handleSubmit = event => {
-    // console.log("submitted");
-    // console.log(event);
+    // Get root reference
+    var storageRef = FirebaseAuthService.getStorage();
+    var file = new File([JSON.stringify(event.formData)], "survey.json");
+
+    // Metadata
+    var metadata = {
+      contentType: "application/json",
+    };
+
+    storageRef
+      .child("current_survey_test/" + "survey.json")
+      .put(file, metadata)
+      .then(function (snapshot) {
+        console.log("Uploaded a blob or file!");
+    });
+    this.render();
   };
 
   handleChange = event => {
