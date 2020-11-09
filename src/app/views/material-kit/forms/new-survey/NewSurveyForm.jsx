@@ -30,20 +30,24 @@ class NewSurveyForm extends Component {
   handleSubmit = event => {
     // Get root reference
     var storageRef = FirebaseAuthService.getStorage();
-    var file = new File([JSON.stringify(event.formData)], "survey.json");
+    require('crypto').randomBytes(48, function(err, buffer) {
+      var token = buffer.toString('hex');
+      console.log(token)
+      event.formData.survey_id = token;
 
-    // Metadata
-    var metadata = {
-      contentType: "application/json",
-    };
+      var file = new File([JSON.stringify(event.formData)], "survey.json");
+      // Metadata
+      var metadata = {
+        contentType: "application/json",
+      };
 
-    storageRef
-      .child("current_survey_test/" + "survey.json")
-      .put(file, metadata)
-      .then(function (snapshot) {
-        console.log("Uploaded a blob or file!");
+      storageRef
+        .child("current_survey_test/" + "survey.json")
+        .put(file, metadata)
+        .then(function (snapshot) {
+          console.log("Uploaded a blob or file!");
+      });
     });
-    this.render();
   };
 
   handleChange = event => {
