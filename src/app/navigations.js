@@ -24,11 +24,11 @@ export const navigations = [
     name: "Survey",
     icon: "description",
     children: [
-      {
+ /*     {
         name: "Basic",
         path: "/surveys/basic",
         iconText: "B"
-      },
+      },*/
       {
         name: "New survey",
         path: "/surveys/survey",
@@ -40,11 +40,11 @@ export const navigations = [
     name: "Inventory",
     icon: "local_cafe",
     children: [
-      {
+/*      {
         name: "Basic",
         path: "/surveys/basic",
         iconText: "B"
-      },
+      },*/
       {
         name: "New survey",
         path: "/surveys/survey",
@@ -114,7 +114,7 @@ export const navigations = [
         iconText: "D"
       }
     ]
-  },*/
+  },
   {
     name: "Sessions",
     icon: "trending_up",
