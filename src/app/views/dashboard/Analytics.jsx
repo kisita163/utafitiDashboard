@@ -16,6 +16,7 @@ class Dashboard1 extends Component {
   constructor(props){
     super(props);
     this.props.readFirebaseDatabase("surveyTest");
+    this.props.areaChart.description = "";
   }
 
   render() {
@@ -24,7 +25,7 @@ class Dashboard1 extends Component {
       <Fragment>
         <div className="pb-24 pt-7 px-8 bg-primary">
           <div className="card-title capitalize text-white mb-4 text-white-secondary">
-            {this.props.areaChart.description}
+            {"-" + this.props.areaChart.description + "-"}
           </div>
           <ModifiedAreaChart
             height="280px"
