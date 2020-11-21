@@ -16,6 +16,13 @@ class APIClient {
     return this.perform('GET', '/area-chart');
   }
 
+  postClientDasboard(data){
+    const resource = '/client-dashboard';
+    const method   = 'POST'
+    return this.perform(method,resource,data)
+  }
+
+
   async perform (method, resource, data) {
     return client({
       method,
